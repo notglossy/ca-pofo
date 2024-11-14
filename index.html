@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>The Bad Cats</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<header>
+		<h1>Some Bad Cats</h1>
+		<nav>
+			<li><a href="index.html">Home</a></li>
+			<li>|</li>
+			<li><a href="a.html" class="catlink" data-cat="a">Bad Cat A</a></li>
+			<li>|</li>
+			<li><a href="b.html" class="catlink" data-cat="b">Bad Cat B</a></li>
+			<li>|</li>
+			<li><a href="c.html" class="catlink" data-cat="c">Bonus Bad Cat</a></li>
+			<li>|</li>
+			<li><a href="contact.html">Contact</a></li>
+		</nav>
+	</header>
+	<main>
+		<p>This is a site about some bad cats.</p>
+		<div class="imgholder">
+			<img src="img/placeholder.jpeg" id="swapcat">
+		</div>
+
+	</main>
+	<footer>&copy; 2024 The Society of Bad Cats, All Rights Reserved</footer>
+	<script>
+		const swapCat = document.getElementById('swapcat');
+
+		const catReveal = (event) => {
+			const cat = event.target.dataset.cat;
+			const url = `img/cat-${cat}.png`;
+			swapCat.src = url;
+		}
+
+		const catRevert = () => {
+			swapCat.src = "img/placeholder.jpeg"
+		}
+
+		const menuLinks = document.getElementsByTagName('nav')[0].getElementsByClassName('catlink');
+
+		for (const child of menuLinks) {
+			child.addEventListener('mouseenter', catReveal);
+			child.addEventListener('mouseleave', catRevert);
+		}
+
+
+	</script>
+</body>
+
+</html>
